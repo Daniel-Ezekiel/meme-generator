@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100vh;
+  color: #fff;
+  font-family: 'Karla', sans-serif;
+}
+
+#root {
+  height: 100%;
+}
+
+header {
+  padding: 2.5rem 2rem;
+  background: linear-gradient(90deg, #672280 1.18%, #a626d3 100%);
+}
+
+.navbar {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+}
+
+.site--title {
+  font-size: 1.8rem;
+}
+
+.site--title img {
+  width: 3rem;
+  height: auto;
+}
+
+.site--title {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.project--id {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+main {
+  padding: 3rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.form__get-meme {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.form--control {
+  width: 48%;
+}
+
+.form--control input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 0.1rem solid #d5d4d8;
+  border-radius: 0.5rem;
+  color: #0d0d0d;
+
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+}
+
+#btn__get--meme {
+  width: 100%;
+  background: linear-gradient(90deg, #672280 1.18%, #a626d3 100%);
+  outline: 0;
+  padding: 1rem 0;
+  border: none;
+  border-radius: 0.5rem;
+
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+
+.meme--container {
+  position: relative;
+}
+
+.meme--img {
+  width: 100%;
+}
+
+.meme--top-text,
+.meme--bottom-text {
+  position: absolute;
+  top: 1.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+
+  font-family: 'Oswald', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+
+  /* -webkit-text-stroke: 0.1rem #000; */
+  text-shadow: #000 0px 0px 0.2rem, #000 0px 0px 0.2rem, #000 0px 0px 0.2rem,
+    #000 0px 0px 0.2rem, #000 0px 0px 0.2rem, #000 0px 0px 0.2rem;
+}
+
+.meme--bottom-text {
+  top: unset;
+  bottom: 1.3rem;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    max-width: 102.4rem;
+  }
+
+  .site--title {
+    font-size: 2.4rem;
+  }
+
+  .project--id {
+    font-size: 1.5rem;
+  }
+
+  main {
+    margin: auto;
+    padding-top: 7rem;
+    width: 64rem;
+  }
+
+  #meme-input__top-text,
+  #meme-input__bottom-text,
+  #btn__get--meme {
+    font-size: 1.5rem;
+  }
+}
