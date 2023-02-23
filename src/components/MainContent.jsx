@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-// import memeImg from '../assets/memeimg.png';
 
 export default function MainContent() {
   // Setting states for inputs and fetch response data
