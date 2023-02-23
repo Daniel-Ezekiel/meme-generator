@@ -6,7 +6,7 @@ export default function Header() {
       <nav className="navbar">
         <h1 className="site--title">
           <img src={trollMeme} alt="meme-img" />
-          Meme Generator
+          Make-A-Meme
         </h1>
 
         <p className="project--id">React.js - Mini Project</p>
