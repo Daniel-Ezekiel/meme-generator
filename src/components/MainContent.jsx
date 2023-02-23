@@ -34,7 +34,6 @@ export default function MainContent() {
     setImgUrl(allUrls.at(randomNum)); // change the value of the current image url
     console.log(randomNum, imgUrl);
     // console.log(allUrls);
-    // console.log('clicked');
   };
 
   return (
