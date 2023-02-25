@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 
 export default function MainContent() {
-  // Setting states for inputs and fetch response data
-  const [topText, setTopText] = useState('');
-  const [bottomText, setBottomText] = useState('');
+  // Meme object state
+  const [meme, setMeme] = useState({
+    topText: '',
+    bottomText: '',
+    imageUrl: '',
+  });
+  // Meme Array state
   const [memeImages, setMemeImages] = useState([]);
-  const [imgUrl, setImgUrl] = useState('');
 
   let allMemes;
   // useEffect hook to handle fetch API request
@@ -25,16 +28,40 @@ export default function MainContent() {
       });
   }, []);
 
-  // Button click handler
-  const handleClick = e => {
+  // Get Meme Handler
+  function getMemeImage(e) {
     e.preventDefault();
     // Generate random number to use to select a random img url
     const randomNum = Math.round(Math.random() * 100);
     const allUrls = memeImages.map(memeData => memeData.url); // Use map method to get all image urls
-    setImgUrl(allUrls.at(randomNum)); // change the value of the current image url
-    console.log(randomNum, imgUrl);
+    setMeme(prevMeme => {
+      return {
+        ...prevMeme,
+        imageUrl: allUrls.at(randomNum),
+      };
+    }); // change the value of the current meme image url
+    console.log(randomNum, meme.imageUrl);
     // console.log(allUrls);
-  };
+  }
+
+  // Update topText
+  function updateTopText(e) {
+    setMeme(prevMeme => {
+      return {
+        ...prevMeme,
+        topText: e.target.value,
+      };
+    });
+  }
+  // Update bottomText
+  function updateBottomText(e) {
+    setMeme(prevMeme => {
+      return {
+        ...prevMeme,
+        bottomText: e.target.value,
+      };
+    });
+  }
 
   return (
     <main>
@@ -45,8 +72,8 @@ export default function MainContent() {
             type="text"
             name="top-text"
             placeholder="Shut up"
-            value={topText}
-            onChange={e => setTopText(e.target.value)}
+            value={meme.topText}
+            onChange={updateTopText}
           />
         </div>
 
@@ -56,20 +83,22 @@ export default function MainContent() {
             type="text"
             name="bottom-text"
             placeholder="and take my money"
-            value={bottomText}
-            onChange={e => setBottomText(e.target.value)}
+            value={meme.bottomText}
+            onChange={updateBottomText}
           />
         </div>
 
-        <button id="btn__get--meme" onClick={handleClick}>
+        <button id="btn__get--meme" onClick={getMemeImage}>
           Get a new meme image 🖼
         </button>
       </form>
 
       <div className="meme--container">
-        {imgUrl && <img className="meme--img" src={imgUrl} alt="meme" />}
-        <h2 className="meme--top-text">{topText}</h2>
-        <h2 className="meme--bottom-text">{bottomText}</h2>
+        {meme.imageUrl && (
+          <img className="meme--img" src={meme.imageUrl} alt="meme" />
+        )}
+        <h2 className="meme--top-text">{meme.topText}</h2>
+        <h2 className="meme--bottom-text">{meme.bottomText}</h2>
       </div>
     </main>
   );
