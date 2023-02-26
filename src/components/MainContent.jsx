@@ -7,6 +7,16 @@ export default function MainContent() {
     bottomText: '',
     imageUrl: '',
   });
+
+  function handleChange(event) {
+    setMeme(prevMeme => {
+      return {
+        ...prevMeme,
+        [event.target.name]: event.target.value,
+      };
+    });
+  }
+
   // Meme Array state
   const [memeImages, setMemeImages] = useState([]);
 
@@ -44,25 +54,6 @@ export default function MainContent() {
     // console.log(allUrls);
   }
 
-  // Update topText
-  function updateTopText(e) {
-    setMeme(prevMeme => {
-      return {
-        ...prevMeme,
-        topText: e.target.value,
-      };
-    });
-  }
-  // Update bottomText
-  function updateBottomText(e) {
-    setMeme(prevMeme => {
-      return {
-        ...prevMeme,
-        bottomText: e.target.value,
-      };
-    });
-  }
-
   return (
     <main>
       <form className="form__get-meme">
@@ -70,10 +61,10 @@ export default function MainContent() {
           <input
             id="meme-input__top-text"
             type="text"
-            name="top-text"
+            name="topText"
             placeholder="Shut up"
             value={meme.topText}
-            onChange={updateTopText}
+            onChange={handleChange}
           />
         </div>
 
@@ -81,10 +72,10 @@ export default function MainContent() {
           <input
             id="meme-input__bottom-text"
             type="text"
-            name="bottom-text"
+            name="bottomText"
             placeholder="and take my money"
             value={meme.bottomText}
-            onChange={updateBottomText}
+            onChange={handleChange}
           />
         </div>
 
