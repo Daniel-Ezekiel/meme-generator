@@ -9,10 +9,11 @@ export default function MainContent() {
   });
 
   function handleChange(event) {
+    const { name, value } = event.target;
     setMeme(prevMeme => {
       return {
         ...prevMeme,
-        [event.target.name]: event.target.value,
+        [name]: value,
       };
     });
   }
