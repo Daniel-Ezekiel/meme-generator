@@ -109,7 +109,7 @@ main {
   top: 1.3rem;
   left: 50%;
   transform: translateX(-50%);
-  width: max-content;
+  width: 80%;
 
   font-family: 'Oswald', sans-serif;
   font-size: 3.2rem;
