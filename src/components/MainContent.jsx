@@ -21,22 +21,13 @@ export default function MainContent() {
   // Meme Array state
   const [memeImages, setMemeImages] = useState([]);
 
-  let allMemes;
-  // useEffect hook to handle fetch API request
   useEffect(() => {
-    const url = `https://api.imgflip.com/get_memes`;
-
-    // Fetching the data from the Get-Memes API
-    fetch(url)
-      .then(res => res.json()) // parse response as JSON
-      .then(res => {
-        allMemes = res.data.memes;
-        // console.log(allMemes);
-        setMemeImages(allMemes);
-      })
-      .catch(err => {
-        console.log(`error ${err}`);
-      });
+    async function getMemes() {
+      const res = await fetch('https://api.imgflip.com/get_memes');
+      const data = await res.json();
+      setMemeImages(data.data.memes);
+    }
+    getMemes();
   }, []);
 
   // Get Meme Handler
